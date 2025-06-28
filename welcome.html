@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Smart Power Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e90ff, #00bfff, #9bff8e, #7ef9b1);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            animation: backgroundMove 20s linear infinite;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .content {
+            max-width: 600px;
+            margin-left: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-text {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4s steps(40, end);
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #333; }
+        }
+
+        .services-text {
+            font-size: 20px;
+            color: #333;
+            text-align: left;
+            margin-top: 20px;
+            max-width: 800px;
+            overflow: hidden;
+            white-space: pre-wrap;
+            position: relative;
+            height: auto;
+            opacity: 0;
+            animation: fadeInText 6s ease-in-out 5s forwards;
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: right;
+            margin-right: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .links-container a {
+            text-decoration: none;
+            color: #0066ff;
+            font-size: 20px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .links-container a:hover {
+            background-color: #0052cc;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <div class="welcome-text">
+            Welcome to Smart Power Tracker
+        </div>
+        <div class="services-text" id="servicesText">
+            At Smart Power Tracker, we provide innovative solutions to monitor and manage your energy consumption efficiently. Our user-friendly platform allows you to track real-time electrical usage, analyze daily power consumption, and receive insights on optimizing energy usage. Whether you're looking to reduce your electricity bill or adopt more sustainable practices, Smart Power Tracker empowers you with the tools to make informed decisions and take control of your energy footprint.
+        </div>
+    </div>
+
+    <div class="links-container">
+        <a href="./login.html">Login</a>
+        <a href="./register.html">Register</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <script>
+        function typeText(element, text, speed) {
+            let index = 0;
+            function type() {
+                if (index < text.length) {
+                    element.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const servicesText = document.getElementById('servicesText');
+            const text = servicesText.textContent;
+            servicesText.textContent = ''; // Clear text
+            typeText(servicesText, text, 50); // Speed in milliseconds
+        });
+    </script>
+
+</body>
+</html>
+
